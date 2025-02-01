@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wojak Meme Generator</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Wojak Meme Generator</h1>
+        <form action="/generate_meme" method="post">
+            <label for="image">Select Wojak Image:</label>
+            <select id="image" name="image" required>
+                {% for image in images %}
+                    <option value="{{ image }}">{{ image }}</option>
+                {% endfor %}
+            </select>
+            <br><br>
+            <label for="top_text">Top Text:</label>
+            <input type="text" id="top_text" name="top_text">
+            <br><br>
+            <label for="bottom_text">Bottom Text:</label>
+            <input type="text" id="bottom_text" name="bottom_text">
+            <br><br>
+            <label for="text">Center Text:</label>
+            <input type="text" id="text" name="text" required>
+            <br><br>
+            <button type="submit">Generate Meme</button>
+        </form>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
